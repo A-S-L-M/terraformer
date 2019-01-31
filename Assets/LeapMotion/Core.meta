@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 586f2f7dfce825e4d95c453d0dd0abb1
+=======
+guid: ff390a3d872184b4081ea4ab8ca3ce24
+>>>>>>> skybox2
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
