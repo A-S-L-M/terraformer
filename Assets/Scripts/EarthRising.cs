@@ -5,12 +5,13 @@ public class EarthRising : MonoBehaviour
 {
     public Camera cam;
     Mesh m;
-    Vector3[] vertices;
+    Vector3[] vertices, verticesInit;
 
     void Start()
     {
          m = GetComponent<MeshFilter>().mesh;
         vertices = m.vertices;
+        verticesInit = m.vertices;
         
     }
 
@@ -57,11 +58,17 @@ public class EarthRising : MonoBehaviour
         {
             vertices[indexMin] -= m.normals[indexMin] / 1000;
         }
-            Debug.Log(vertices[indexMin].x);
+           // Debug.Log(vertices[indexMin].x);
         // Debug.Log(hit.collider.gameObject.name);
         //  Debug.Log(pointSphere.x);
 
-
+        float diff = vertices[indexMin].z - verticesInit[indexMin].z;
+        Debug.Log(diff);
+/*
+        if (-(diff) > 0.01)
+        {
+            m.colors[indexMin] = Color.red;
+        }*/
 
         //Vector3 pointSphereNormal = 
 
