@@ -18,7 +18,7 @@ public class EarthRising : MonoBehaviour
     {
         //cam = GetComponent<Camera>();
 
-        if (!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             return;
 
         RaycastHit hit;
@@ -48,9 +48,16 @@ public class EarthRising : MonoBehaviour
                 indexMin = i;
             }
         }
-        vertices[indexMin] += m.normals[indexMin] / 1000;
 
-        Debug.Log(vertices[indexMin].x);
+        if (Input.GetMouseButton(0) == true)
+        {
+            vertices[indexMin] += m.normals[indexMin] / 1000;
+        }
+        else if (Input.GetMouseButton(1) == true)
+        {
+            vertices[indexMin] -= m.normals[indexMin] / 1000;
+        }
+            Debug.Log(vertices[indexMin].x);
         // Debug.Log(hit.collider.gameObject.name);
         //  Debug.Log(pointSphere.x);
 
