@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+
 public class LancerRayon : MonoBehaviour
 {
     public Transform hand;
     private LineRenderer line;
+    public static char clicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,12 @@ public class LancerRayon : MonoBehaviour
             line.SetWidth(0.01f, 0.01f);
           
             if(Physics.Raycast(ray, out hit, 1000.0f)){
+                if (hit.transform.gameObject == "Earth")
+                    clicked = 'E';
+                if (hit.transform.gameObject == "Tree")
+                    clicked = 'T';
+                if (hit.transform.gameObject == "Cloud")
+                    clicked = 'C';
                 if (OVRInput.Get(OVRInput.Button.One))
                 {
                     print("Coucou");
