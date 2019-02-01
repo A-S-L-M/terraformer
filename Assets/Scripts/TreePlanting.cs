@@ -6,7 +6,7 @@ public class TreePlanting : MonoBehaviour
     public Camera cam;
     Mesh m;
     Vector3[] vertices, verticesInit;
-
+    Vector3 treeSize = new Vector3(0.05f, 0.05f, 0.05f);
     public GameObject myobject;
 
     void Start()
@@ -62,7 +62,7 @@ public class TreePlanting : MonoBehaviour
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, m.normals[indexMin]);
             Vector3 position = hit.point;//transform.InverseTransformPoint(hit.point);
 
-
+            myobject.gameObject.transform.localScale = treeSize;
             //  transform.worldToLocalMatrix(position);
             myobject.transform.SetPositionAndRotation(position, rotation);
 
