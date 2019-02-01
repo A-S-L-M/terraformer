@@ -9,7 +9,7 @@ public class EarthRising : MonoBehaviour
 
     void Start()
     {
-         m = GetComponent<MeshFilter>().mesh;
+        m = GetComponent<MeshFilter>().mesh;
         vertices = m.vertices;
         verticesInit = m.vertices;
         
@@ -18,6 +18,11 @@ public class EarthRising : MonoBehaviour
     void Update()
     {
         //cam = GetComponent<Camera>();
+        char clicked = LancerRayon.clicked;
+        if (clicked != 'E')
+        {
+            return;
+        }
 
         if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             return;
