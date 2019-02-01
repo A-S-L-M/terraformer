@@ -8,11 +8,16 @@ public class CloudsCreation : MonoBehaviour
     Vector3[] vertices, verticesInit, verticesClouds;
     int indexClouds = 0;
 
+    Color[] colors;
+
     void Start()
     {
         m = GetComponent<MeshFilter>().mesh;
         vertices = m.vertices;
+        verticesClouds = m.vertices;
         verticesInit = m.vertices;
+        colors = new Color[verticesClouds.Length];
+
 
     }
 
@@ -30,10 +35,7 @@ public class CloudsCreation : MonoBehaviour
         Renderer rend = hit.transform.GetComponent<Renderer>();
         MeshCollider meshCollider = hit.collider as MeshCollider;
 
-        //Debug.Log(hit.collider.gameObject.name);
 
-        /*if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null || meshCollider == null)
-            return;*/
 
 
 
@@ -53,24 +55,26 @@ public class CloudsCreation : MonoBehaviour
 
         if (Input.GetMouseButton(0) == true)
         {           
-            indexClouds++;
-            verticesClouds[indexClouds] = vertices[indexMin];
-           //Debug.Log(verticesClouds[indexMin].z);
+    
+            verticesClouds[indexClouds].z = vertices[indexMin].z;
+           
+            Debug.Log(vertices[indexMin].z);
+            Debug.Log(verticesClouds[indexClouds].z);
+             indexClouds++;
         }
         else if (Input.GetMouseButton(1) == true)
         {
             vertices[indexMin] -= m.normals[indexMin] / 1000;
         }
-        // Debug.Log(vertices[indexMin].x);
+         Debug.Log(verticesClouds.Length);
 
 
-        Color[] colors = new Color[verticesClouds.Length];
 
         for (int i = 0; i < verticesClouds.Length; i++)
-            colors[i] = Color.Lerp(Color.white, Color.red, verticesClouds[i].y);
+            colors[i] = Color.white;
 
         c = GetComponent<MeshFilter>().mesh;
-        c.vertices = verticesClouds;
+        m.colors = colors;
 
        // float diff = vertices[indexMin].z - verticesInit[indexMin].z;
       //  Debug.Log(diff);
