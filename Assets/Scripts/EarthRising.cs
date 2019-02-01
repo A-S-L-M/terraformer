@@ -6,10 +6,11 @@ public class EarthRising : MonoBehaviour
     public Camera cam;
     Mesh m;
     Vector3[] vertices, verticesInit;
+    char LastClicked;
 
     void Start()
     {
-         m = GetComponent<MeshFilter>().mesh;
+        m = GetComponent<MeshFilter>().mesh;
         vertices = m.vertices;
         verticesInit = m.vertices;
         
@@ -18,6 +19,11 @@ public class EarthRising : MonoBehaviour
     void Update()
     {
         //cam = GetComponent<Camera>();
+        LastClicked = GameObject.Find("ButtonHandler").GetComponent<LastClicked>();
+        if (LastClicked != 'E')
+        {
+            return;
+        }
 
         if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             return;
