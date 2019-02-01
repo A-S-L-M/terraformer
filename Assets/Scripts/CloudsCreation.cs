@@ -24,6 +24,9 @@ public class CloudsCreation : MonoBehaviour
     void Update()
     {
         //cam = GetComponent<Camera>();
+        char clicked = LancerRayon.clicked;
+        if (clicked != 'C')
+            return;
 
         if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             return;
